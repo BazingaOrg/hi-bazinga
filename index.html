@@ -25,12 +25,23 @@
       href="https://gw.alipayobjects.com/os/k/font/lxgwwenkaiscreenr.css"
       crossorigin="anonymous"
     />
-    <!-- <script
-      defer
-      src="https://cloud.umami.is/script.js"
-      data-website-id="af7f67e5-3c81-4657-afce-5485acb72536"
-    ></script> -->
     <style>
+      :root {
+        /* 日间模式的颜色变量 */
+        --bg-color: #ffffff;
+        --text-color: #000000;
+        --item-bg-color: #f2f2f2;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          /* 夜间模式的颜色变量 */
+          --bg-color: #1a1a1a;
+          --text-color: #ffffff;
+          --item-bg-color: #2d2d2d;
+        }
+      }
+
       body,
       html {
         font-family: "LXGW WenKai Screen R", "Inter";
@@ -41,6 +52,8 @@
         overscroll-behavior: none;
         font-display: swap;
         -webkit-font-smoothing: subpixel-antialiased;
+        color: var(--text-color);
+        background-color: var(--bg-color);
       }
 
       .min-h-full {
@@ -86,7 +99,7 @@
         position: fixed;
         width: 100vw;
         z-index: -1;
-        background: #ffffff;
+        background: var(--bg-color);
       }
 
       .display-image {
@@ -136,7 +149,7 @@
         width: 100%;
         z-index: -1;
         border: 0px solid transparent;
-        background: #f2f2f2;
+        background: var(--item-bg-color);
         border-radius: 30px;
       }
 
@@ -158,7 +171,7 @@
         overflow: hidden;
         text-decoration: none;
         z-index: 10;
-        color: #000000;
+        color: var(--text-color);
         font-size: 16px;
         font-weight: 400;
         text-transform: none;
@@ -183,7 +196,7 @@
       }
 
       .page-text-color {
-        color: #000000;
+        color: var(--text-color);
       }
 
       .top-sec {
@@ -219,6 +232,83 @@
         }
       }
     </style>
+    <script>
+      // 常量配置
+      const LINK_ICON = "/public/little-dog.png";
+
+      // 链接数据
+      const links = [
+        {
+          name: "github",
+          url: "https://github.com/BazingaOrg",
+          icon: LINK_ICON,
+        },
+        {
+          name: "blogs",
+          url: "https://blogs.bazinga.ink",
+          icon: LINK_ICON,
+        },
+        {
+          name: "notion",
+          url: "https://www.notion.so/c4ce32c9e2474d7d9b277204de180f71",
+          icon: LINK_ICON,
+        },
+        {
+          name: "today-doing",
+          url: "https://todo.bazinga.ink",
+          icon: LINK_ICON,
+        },
+        {
+          name: "immich",
+          url: "https://immich.bazinga.ink",
+          icon: LINK_ICON,
+        },
+        {
+          name: "open-web-ui",
+          url: "https://openwebui.bazinga.ink",
+          icon: LINK_ICON,
+        },
+        {
+          name: "lobe-chat",
+          url: "https://chat.bazinga.ink",
+          icon: LINK_ICON,
+        },
+        {
+          name: "ruanyf-weekly-pick",
+          url: "https://ruanyf-weekly-pick.bazinga.ink/",
+          icon: LINK_ICON,
+        },
+      ];
+
+      // 生成链接 HTML
+      window.addEventListener("DOMContentLoaded", () => {
+        const linksContainer = document.getElementById("links-container");
+        const linksHTML = links
+          .map(
+            (link) => `
+          <div class="page-item-wrap relative">
+            <div class="page-item flex flex-center absolute"></div>
+            <a
+              target="_blank"
+              rel="noopener nofollow"
+              class="page-item-each py-10 flex flex-center"
+              href="${link.url}"
+            >
+              <img
+                class="link-each-image"
+                src="${link.icon}"
+                alt="${link.name}"
+              />
+              <span class="item-title text-center">${link.name}</span>
+            </a>
+          </div>
+        `
+          )
+          .join("");
+
+        linksContainer.innerHTML = linksHTML;
+      });
+    </script>
   </head>
 
   <body>
@@ -240,119 +330,8 @@
         >
           线上折腾技术，线下追求体验
         </h2>
-        <div class="mt-28">
-          <div class="page-item-wrap relative">
-            <div class="page-item flex flex-center absolute"></div>
-            <a
-              target="_blank"
-              rel="noopener nofollow"
-              class="page-item-each py-10 flex flex-center"
-              href="https://github.com/BazingaOrg"
-            >
-              <img
-                class="link-each-image"
-                src="/public/little-dog.png"
-                alt="Github"
-              />
-              <span class="item-title text-center">Github</span>
-            </a>
-          </div>
-          <div class="page-item-wrap relative">
-            <div class="page-item flex flex-center absolute"></div>
-            <a
-              target="_blank"
-              rel="noopener nofollow"
-              class="page-item-each py-10 flex flex-center"
-              href="https://blogs.bazinga.ink"
-            >
-              <img
-                class="link-each-image"
-                src="/public/little-dog.png"
-                alt="Blogs"
-              />
-              <span class="item-title text-center">Blogs</span>
-            </a>
-          </div>
-          <div class="page-item-wrap relative">
-            <div class="page-item flex flex-center absolute"></div>
-            <a
-              target="_blank"
-              rel="noopener nofollow"
-              class="page-item-each py-10 flex flex-center"
-              href="https://todo.bazinga.ink"
-            >
-              <img
-                class="link-each-image"
-                src="/public/little-dog.png"
-                alt="Today Doing"
-              />
-              <span class="item-title text-center">Today Doing</span>
-            </a>
-          </div>
-          <div class="page-item-wrap relative">
-            <div class="page-item flex flex-center absolute"></div>
-            <a
-              target="_blank"
-              rel="noopener nofollow"
-              class="page-item-each py-10 flex flex-center"
-              href="https://immich.bazinga.ink"
-            >
-              <img
-                class="link-each-image"
-                src="/public/little-dog.png"
-                alt="Immich"
-              />
-              <span class="item-title text-center">Immich</span>
-            </a>
-          </div>
-          <div class="page-item-wrap relative">
-            <div class="page-item flex flex-center absolute"></div>
-            <a
-              target="_blank"
-              rel="noopener nofollow"
-              class="page-item-each py-10 flex flex-center"
-              href="https://openwebui.bazinga.ink"
-            >
-              <img
-                class="link-each-image"
-                src="/public/little-dog.png"
-                alt="OpenWebUI"
-              />
-              <span class="item-title text-center">OpenWebUI</span>
-            </a>
-          </div>
-          <div class="page-item-wrap relative">
-            <div class="page-item flex flex-center absolute"></div>
-            <a
-              target="_blank"
-              rel="noopener nofollow"
-              class="page-item-each py-10 flex flex-center"
-              href="https://chat.bazinga.ink"
-            >
-              <img
-                class="link-each-image"
-                src="/public/little-dog.png"
-                alt="LobeChat"
-              />
-              <span class="item-title text-center">LobeChat</span>
-            </a>
-          </div>
-          <div class="page-item-wrap relative">
-            <div class="page-item flex flex-center absolute"></div>
-            <a
-              target="_blank"
-              rel="noopener nofollow"
-              class="page-item-each py-10 flex flex-center"
-              href="https://www.notion.so/c4ce32c9e2474d7d9b277204de180f71"
-            >
-              <img
-                class="link-each-image"
-                src="/public/little-dog.png"
-                alt="Notion"
-              />
-              <span class="item-title text-center">Notion</span>
-            </a>
-          </div>
+        <div id="links-container" class="mt-28">
+          <!-- 链接将通过 JavaScript 动态生成 -->
         </div>
       </div>
     </div>
