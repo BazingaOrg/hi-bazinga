@@ -1,9 +1,0 @@
-{
-    "name": "生成中文提交信息",
-    "description": "点击生成提交信息按钮时，生成带英文前缀的中文Git提交信息",
-    "match": {
-        "action": "generate_commit_message"
-    },
-    "priority": 100,
-    "prompt": "请用中文回复。根据以下Git变更生成一条简洁的提交信息，使用英文类型前缀+中文描述的格式。格式为：类型: 中文描述\n\n类型包括：\n- feat: 新功能\n- fix: 修复bug\n- docs: 文档更新\n- style: 代码格式调整\n- refactor: 代码重构\n- perf: 性能优化\n- test: 测试相关\n- build: 构建系统相关\n- ci: 持续集成相关\n- chore: 其他修改\n\n请确保描述部分使用中文，简洁明了地表达变更内容。请始终用中文回答，不要用英文。"
-}
